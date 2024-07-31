@@ -21,9 +21,11 @@ import {
 
 export default function Home() {
   const [items, setItems] = useState([]);
+  const [filterItems, setFilterItems] = useState([]);
   const [newItem, setNewItem] = useState({ name: "", quantity: "" });
   const [editorView, setEditorView] = useState(false);
   const [editItem, setEditItem] = useState({ name: "", quantity: "" });
+  const [search, setSearch] = useState("");
 
   // Add item to database
   const addItem = async (e) => {
@@ -47,6 +49,7 @@ export default function Home() {
         itemsArr.push({ ...doc.data(), id: doc.id });
       });
       setItems(itemsArr);
+      setFilterItems(itemsArr);
     });
   }, []);
 
@@ -60,6 +63,22 @@ export default function Home() {
     setEditorView(!editorView);
     setEditItem({ name: nam, quantity: q, id: i });
   }
+
+  //Updated Search
+  const updateSearch = (e) => {
+    setSearch(e.target.value);
+    const s = e.target.value;
+
+    setFilterItems(
+      items.filter((el) => {
+        if (s === "") {
+          return el;
+        } else {
+          return el.name.toLowerCase().includes(s.toLowerCase());
+        }
+      })
+    );
+  };
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between sm:p-24 p-4">
@@ -92,8 +111,18 @@ export default function Home() {
               +
             </button>
           </form>
+          <form className="grid grid-cols-6 items-center text-black">
+            <input
+              value={search}
+              onChange={updateSearch}
+              className="col-span-6 p-3 border mx-1 mt-3"
+              type="text"
+              placeholder="What are you looking for?"
+            />
+          </form>
+          {/* <List input={search} items={items}></List> */}
           <ul>
-            {items.map((item, id) => (
+            {filterItems.map((item, id) => (
               <li
                 key={id}
                 className="my-4 w-full flex justify-between bg-slate-950"
