@@ -1,11 +1,17 @@
-## Pantry Tracker App
+## Pantry Tracker App | Personal Project
 
-This is my pantry tracker app that I created for my Headstarted Fellowship. This is project 2 out of 6.
+**Description**:  
+Created a pantry management web application that helps users track, manage, and organize pantry items, built with Next.js for the frontend and Firebase for the backend.
 
-Tech Stack: Next.js(React, Tailwind) for front-end and Firestore for backend.
+**Key Features**:
 
-## Areas to improve
+- Developed a responsive user interface using React for seamless navigation and performance across devices.
+- Integrated Firebase for real-time database functionality, allowing users to add, edit, and remove pantry items with instant updates.
+- Integrated search and filter functionality to easily find items based on category, expiration date, or name.
+- Utilized Firebase Firestore to store pantry data, ensuring scalability and real-time synchronization across devices.
 
-[]Picture integration into UI
-[]Phone support
-[]Location field(inventory)
+**Skills Demonstrated**:  
+Full-stack web development, real-time database integration, user authentication, state management, responsive design, CRUD operations.
+
+**Technologies Used**:  
+Next.js, Firebase (Firestore), JavaScript, HTML, CSS, Git.
